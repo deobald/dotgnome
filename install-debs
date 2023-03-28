@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-# java
+sudo add-apt-repository universe
+
 sudo apt update
+
+# java
 sudo apt install -y openjdk-17-jdk
 java -version
 
@@ -10,4 +13,11 @@ sudo apt install rbenv
 
 # cli
 sudo apt  install tree
+
+# fonts
+sudo apt install fonts-firacode
+sudo apt install fonts-inconsolata
+
+# emacs
+sudo apt install emacs -y
 
