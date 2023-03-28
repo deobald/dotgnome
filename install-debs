@@ -21,6 +21,9 @@ sudo apt install fonts-inconsolata
 # emacs
 sudo apt install emacs -y
 
+# evolution
+sudo apt install evolution
+
 # vlc
 sudo apt install vlc
 
