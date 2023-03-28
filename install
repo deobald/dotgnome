@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# gnome settings
+./gnomify.sh
+
+
+
