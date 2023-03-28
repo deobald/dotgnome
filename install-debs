@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo add-apt-repository universe
+sudo add-apt-repository universe -y
 
 sudo apt update
 
@@ -20,4 +20,43 @@ sudo apt install fonts-inconsolata
 
 # emacs
 sudo apt install emacs -y
+
+# vlc
+sudo apt install vlc
+
+# inkscape
+sudo apt install inkscape
+
+# spotify
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-get update
+sudo apt-get install spotify-client
+
+# flatpak
+sudo apt install flatpak
+sudo apt install gnome-software-plugin-flatpak
+
+############
+# flatpaks #
+############
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+echo "You will need to reboot before the flatpak binaries are on the path."
+echo "(Press <enter> to continue.)"
+rebooten=""
+read rebooten
+
+# apostrophe
+
+flatpak install flathub org.gnome.gitlab.somas.Apostrophe
+
+
+#########
+# snaps #
+#########
+
+# bitwarden (deb and flatpak don't support updates)
+sudo snap install bitwarden
 
