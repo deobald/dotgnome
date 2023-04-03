@@ -22,7 +22,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
 
 # super+space is the only sane key combo for a quick launcher
 gsettings set org.gnome.mutter overlay-key ''
-gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s', '<Super>Space']"
+# gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s', '<Super>Space']"
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>Space']"
 
 # date/time
 gsettings set org.gnome.desktop.datetime automatic-timezone true
