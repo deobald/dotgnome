@@ -25,6 +25,9 @@ gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
 
+# input sources
+gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'in+bolnagri')]"
+
 # date/time
 gsettings set org.gnome.desktop.datetime automatic-timezone true
 
