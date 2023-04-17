@@ -5,6 +5,11 @@ gsettings set org.gnome.desktop.peripherals.mouse natural-scroll true
 
 # keyboard
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Primary><Alt>space']"
+
+# keyboard: super+space (the only sane key combo for a quick launcher)
+gsettings set org.gnome.mutter overlay-key ''
+gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>Space']"
 
 # gui
 gsettings set org.gnome.desktop.interface show-battery-percentage true
@@ -20,11 +25,6 @@ gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
 gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
 
-# super+space is the only sane key combo for a quick launcher
-gsettings set org.gnome.mutter overlay-key ''
-# gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>s', '<Super>Space']"
-gsettings set org.gnome.shell.keybindings toggle-overview "['<Super>Space']"
-
 # date/time
 gsettings set org.gnome.desktop.datetime automatic-timezone true
 
@@ -34,4 +34,3 @@ gsettings set org.gnome.evolution.mail composer-localized-re "AW,SV,Odg"
 gsettings set org.gnome.evolution.mail preview-unset-html-colors true
 gsettings set org.gnome.evolution.mail composer-inherit-theme-colors true
 gsettings set org.gnome.evolution.mail composer-mode 'markdown-html'
-
