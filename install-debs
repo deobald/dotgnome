@@ -5,7 +5,7 @@ sudo add-apt-repository universe -y
 sudo apt update
 
 # wireplumber
-# NOTE: this seems to break on ubuntu 22.04, so disabled for now:
+# TODO: sanity-check if any of this is required for 23.04
 sudo apt install wireplumber
 sudo apt install libspa-0.2-bluetooth
 sudo apt install pipewire-audio-client-libraries
@@ -70,4 +70,3 @@ flatpak install flathub org.gnome.gitlab.somas.Apostrophe
 
 # bitwarden (deb and flatpak don't support updates)
 sudo snap install bitwarden
-
