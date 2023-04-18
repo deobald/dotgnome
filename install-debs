@@ -4,6 +4,14 @@ sudo add-apt-repository universe -y
 
 sudo apt update
 
+# wireplumber
+# NOTE: this seems to break on ubuntu 22.04, so disabled for now:
+sudo apt install wireplumber
+sudo apt install libspa-0.2-bluetooth
+sudo apt install pipewire-audio-client-libraries
+sudo apt install pavucontrol
+sudo apt remove pulseaudio-module-bluetooth
+
 # java
 sudo apt install -y openjdk-17-jdk
 java -version

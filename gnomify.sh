@@ -37,3 +37,5 @@ gsettings set org.gnome.evolution.mail composer-localized-re "AW,SV,Odg"
 gsettings set org.gnome.evolution.mail preview-unset-html-colors true
 gsettings set org.gnome.evolution.mail composer-inherit-theme-colors true
 gsettings set org.gnome.evolution.mail composer-mode 'markdown-html'
+
+
