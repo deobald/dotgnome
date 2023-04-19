@@ -4,7 +4,7 @@
 gsettings set org.gnome.desktop.peripherals.mouse natural-scroll true
 
 # keyboard
-gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier']"
+gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'compose:ralt']"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Primary><Alt>space']"
 
 # keyboard: super+space (the only sane key combo for a quick launcher)
