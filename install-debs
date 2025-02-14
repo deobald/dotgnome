@@ -1,6 +1,29 @@
 #!/usr/bin/env bash
 
-sudo add-apt-repository universe -y
+# flatpak
+sudo apt install flatpak
+sudo apt install gnome-software-plugin-flatpak
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+echo "You will need to reboot before the flatpak binaries are on the path."
+echo "(Press <enter> to continue.)"
+rebooten=""
+read rebooten
+
+############
+#  ubuntu  #
+############
+
+export DISTRO=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+printf "Distro is ${DISTRO}\n"
+if [[ "$DISTRO" == "\"Debian GNU/Linux\"" ]]; then
+  printf "Detected Debian. Skipping Ubuntu hoop-jumps.\n"
+elif [[ "$DISTRO" == "Ubuntu" ]]; then
+  printf "Detected Ubuntu. Applying Ubuntu-specific changes...\n"
+  ./install-debs-ubuntu
+fi
+
+sudo add-apt-repository contrib -y
 sudo apt update
 
 ############
@@ -18,9 +41,6 @@ sudo apt install pipewire-audio-client-libraries
 sudo apt install pavucontrol
 sudo apt remove pulseaudio-module-bluetooth
 
-# MPEG-4 AAC
-sudo apt install ubuntu-restricted-extras
-
 # fonts
 sudo apt install fonts-firacode
 sudo apt install fonts-inconsolata
@@ -33,8 +53,9 @@ sudo apt install fonts-inconsolata
 sudo apt install -y openjdk-17-jdk
 java -version
 
-# ruby
-sudo apt install rbenv
+# ruby - should be installed manually
+#sudo apt install rbenv
+printf "Skipping rbenv - please install manually as the deb packages are out of date."
 
 ############
 #    cli   #
@@ -42,6 +63,7 @@ sudo apt install rbenv
 
 # cli
 sudo apt install tree
+sudo apt install curl
 
 ############
 #   apps   #
@@ -60,34 +82,32 @@ sudo apt install vlc
 sudo apt install inkscape
 
 # spotify
-curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+curl -sS https://download.spotify.com/debian/pubkey_C85668DF69375001.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-get update
 sudo apt-get install spotify-client
 
-# flatpak
-sudo apt install flatpak
-sudo apt install gnome-software-plugin-flatpak
+# signal
+# 1. Install our official public software signing key:
+#wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+#cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+# 2. Add our repository to your list of repositories:
+#echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
+# 3. Update your package database and install Signal:
+#sudo apt update && sudo apt install signal-desktop
 
-############
-# flatpaks #
-############
-
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
-echo "You will need to reboot before the flatpak binaries are on the path."
-echo "(Press <enter> to continue.)"
-rebooten=""
-read rebooten
+# signal
+flatpak install flathub org.signal.Signal
 
 # apostrophe
-
 flatpak install flathub org.gnome.gitlab.somas.Apostrophe
 
+# telegram
+flatpak install flathub org.telegram.desktop -y
 
-#########
-# snaps #
-#########
+# slack
+flatpak install flathub com.slack.Slack
 
-# bitwarden (deb and flatpak don't support updates)
-sudo snap install bitwarden
+# discord
+flatpak install flathub com.discordapp.Discord
+

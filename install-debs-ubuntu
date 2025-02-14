@@ -1,0 +1,19 @@
+
+sudo add-apt-repository universe -y
+
+# MPEG-4 AAC
+sudo apt install ubuntu-restricted-extras
+
+############
+# flatpaks #
+############
+
+
+
+#########
+# snaps #
+#########
+
+# bitwarden (deb and flatpak don't support updates)
+sudo snap install bitwarden
+

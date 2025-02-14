@@ -18,13 +18,6 @@ gsettings set org.gnome.desktop.interface show-battery-percentage true
 # gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 gsettings reset org.gnome.mutter experimental-features
 
-# hide the stupid dock
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
-gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
-gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
-gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
-
 # input sources
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'us'), ('xkb', 'in+bolnagri')]"
 
@@ -38,4 +31,12 @@ gsettings set org.gnome.evolution.mail preview-unset-html-colors true
 gsettings set org.gnome.evolution.mail composer-inherit-theme-colors true
 gsettings set org.gnome.evolution.mail composer-mode 'markdown-html'
 
+export DISTRO=$(awk -F= '/^NAME/{print $2}' /etc/os-release)
+printf "Distro is ${DISTRO}\n"
+if [[ "$DISTRO" == "\"Debian GNU/Linux\"" ]]; then
+  printf "Detected Debian. No Ubuntu-specific changes applied.\n"
+elif [[ "$DISTRO" == "Ubuntu" ]]; then
+  printf "Detected Ubuntu. Applying Ubuntu-specific changes...\n"
+  ./gnomify-ubuntu.sh
+fi
 
