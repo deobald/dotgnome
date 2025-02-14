@@ -34,12 +34,12 @@ sudo apt update
 sudo apt install build-essential zlib1g-dev libffi-dev libssl-dev libbz2-dev libreadline-dev libsqlite3-dev liblzma-dev tk-dev
 
 # wireplumber
-# TODO: sanity-check if any of this is required for 23.04
-sudo apt install wireplumber
-sudo apt install libspa-0.2-bluetooth
-sudo apt install pipewire-audio-client-libraries
 sudo apt install pavucontrol
-sudo apt remove pulseaudio-module-bluetooth
+# TODO: sanity-check if any of this is required for 23.04 - nirbheek says no; will keep commented for now
+#sudo apt install wireplumber
+#sudo apt install libspa-0.2-bluetooth
+#sudo apt install pipewire-audio-client-libraries
+#sudo apt remove pulseaudio-module-bluetooth
 
 # fonts
 sudo apt install fonts-firacode
