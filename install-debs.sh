@@ -17,3 +17,6 @@ sudo apt install fonts-inconsolata
 sudo apt install tree
 sudo apt install curl
 
+# dev tools
+sudo apt install build-essential zlib1g-dev libffi-dev libssl-dev libbz2-dev libreadline-dev libsqlite3-dev liblzma-dev tk-dev
+
