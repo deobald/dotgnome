@@ -1,5 +1,8 @@
 #/usr/bin/env bash
 
+# mouse
+gsettings set org.gnome.desktop.peripherals.mouse natural-scroll true
+
 # keyboard
 gsettings set org.gnome.desktop.input-sources xkb-options "['caps:ctrl_modifier', 'compose:ralt']"
 
